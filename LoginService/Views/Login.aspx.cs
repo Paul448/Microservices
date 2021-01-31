@@ -28,7 +28,7 @@ namespace LoginService.Views
             Verwalter.Login(txtUID.Text, txtPW.Text);
             if(Verwalter.CheckAuth() == true)
             {
-                Response.Redirect("https://localhost:44338/Views/GateHome");
+                Response.Redirect("https://localhost:44338/Views/GateHome?auth=" + Global.Verwalter.AuthID);
             }
             else
             {

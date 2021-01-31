@@ -10,7 +10,9 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click"/>
+            <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click"/> <br />
+            <asp:Button ID="btnAdmin" runat="server" Text="Admin-Panel" OnClick="btnAdmin_Click"/> <br />
+            <asp:Label ID="lblAuth" runat="server" Text="Auth: Error"></asp:Label> 
         </div>
     </form>
 </body>

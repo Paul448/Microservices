@@ -7,11 +7,11 @@
 // </automatisch generiert>
 //------------------------------------------------------------------------------
 
-namespace GatewayService.Views
+namespace LoginService.Views
 {
 
 
-    public partial class Gatehome
+    public partial class AdminPanel
     {
 
         /// <summary>
@@ -24,30 +24,21 @@ namespace GatewayService.Views
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// btnLogin-Steuerelement
+        /// lblinfo-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogin;
+        protected global::System.Web.UI.WebControls.Label lblinfo;
 
         /// <summary>
-        /// btnAdmin-Steuerelement
+        /// TUSERS-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdmin;
-
-        /// <summary>
-        /// lblAuth-Steuerelement
-        /// </summary>
-        /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAuth;
+        protected global::System.Web.UI.WebControls.Table TUSERS;
     }
 }

@@ -39,6 +39,13 @@ namespace LoginService.Controllers
             return result;
         }
 
+        public bool CheckCode(string Code)
+        {
+            string URI = "api/Gate/CheckAuth/" + Code;
+            bool result = Convert.ToBoolean(GetHTTP(URI));
+            return result;
+        }
+
         public string GetHTTP(string URI, string Port = "44338")
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://localhost:" + Port + "/" + URI);
