@@ -16,22 +16,12 @@ namespace GatewayService.Controllers
 {
     public class Controller
     {
-        private List<Turnier> _Liste;
         private string _AuthID;
-        public List<Turnier> Liste { get => _Liste; set => _Liste = value; }
         public string AuthID { get => _AuthID; set => _AuthID = value; }
 
         public Controller()
         {
             this.AuthID = "-1";
-            this.Liste = new List<Turnier>();
-            this.Liste = LoadTurniere();
-        }
-
-        public List<Turnier> LoadTurniere()
-        {
-
-            return new List<Turnier>();
         }
 
         public void Login(string UID, string PW)
@@ -61,11 +51,6 @@ namespace GatewayService.Controllers
             StreamReader reader = new StreamReader(recieve);
             string Auth1 = reader.ReadToEnd();
             return Auth1;
-        }
-
-        public void GetAllTurnier()
-        {
-            string JsonList = GetHTTP("api/Gate/Turnier");
         }
 
     }

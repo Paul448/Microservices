@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Gateway {
+namespace TurnierverwaltungService {
     
     
     public partial class ViewSwitcher {

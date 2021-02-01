@@ -15,13 +15,21 @@ namespace LoginService.Views
             var uri = new Uri(HttpContext.Current.Request.Url.AbsoluteUri);
             var query = HttpUtility.ParseQueryString(uri.Query);
             string AuthID = query.Get("auth");
-            if(Global.Verwalter.CheckCode(AuthID))
+            if(AuthID == "")
             {
-                Load_Users();
+                AuthID = "-1";
+                lblinfo.Text = "Authentifizierung fehlgeschlagen!";
             }
             else
             {
-                lblinfo.Text = "Code ungültig";
+                if (Global.Verwalter.CheckCode(AuthID))
+                {
+                    Load_Users();
+                }
+                else
+                {
+                    lblinfo.Text = "Authentifizierung fehlgeschlagen!";
+                }
             }
 
         }
