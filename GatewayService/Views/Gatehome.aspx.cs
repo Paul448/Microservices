@@ -38,5 +38,11 @@ namespace GatewayService.Views
         {
             Response.Redirect("https://localhost:44330/Views/Adminpanel?auth=" + AuthID);
         }
+
+        protected void btnMannschaft_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("https://localhost:44336/Views/Mannschaftsverwaltung?auth=" + AuthID);
+            //44336
+        }
     }
 }

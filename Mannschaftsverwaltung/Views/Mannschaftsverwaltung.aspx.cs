@@ -12,6 +12,13 @@ namespace Mannschaftsverwaltung.Views
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        } 
+
+        public void Auth()
+        {
+            var uri = new Uri(HttpContext.Current.Request.Url.AbsoluteUri);
+            var query = HttpUtility.ParseQueryString(uri.Query);
+            string AuthID = query.Get("auth");
         }
     }
 }
