@@ -9,9 +9,11 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div>   
             <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click"/> <br />
             <asp:Button ID="btnAdmin" runat="server" Text="Admin-Panel" OnClick="btnAdmin_Click"/> <br />
+            <asp:Button ID="btnTurnier" runat="server" Text="Turnierverwaltung" OnClick="btnTurnier_Click"/> <br />
+            <asp:Button ID="btnMannschaftsverwaltung" runat="server" Text="Turnierverwaltung"/> <br />
             <asp:Label ID="lblAuth" runat="server" Text="Auth: Error"></asp:Label> 
         </div>
     </form>

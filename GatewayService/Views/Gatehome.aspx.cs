@@ -33,5 +33,10 @@ namespace GatewayService.Views
         {
             Response.Redirect("https://localhost:44330/Views/Adminpanel?auth=" + AuthID);
         }
+
+        protected void btnTurnier_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("https://localhost:44330/Views/Adminpanel?auth=" + AuthID);
+        }
     }
 }
