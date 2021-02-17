@@ -34,8 +34,20 @@ namespace Mannschaftsverwaltung.Views
             List<Mannschaft> MSTabelle = Verwalter.MSLIST;
             foreach(var e in MSTabelle)
             {
-                selectTeam.Items.Add(e.Name);        
+                selectTeam.Items.Add(e.MID + " - " + e.Name);        
             }
+        }
+
+        protected void selectTeam_SelectedIndexChanged(object sender, EventArgs e)
+        { 
+            string[] vsplit = selectTeam.SelectedItem.Text.Split('-');
+            int vMID = Convert.ToInt32(vsplit[0].Trim());
+            LoadPersonen(vMID);
+        }
+
+        public void LoadPersonen(int MS)
+        {
+
         }
     }
 }

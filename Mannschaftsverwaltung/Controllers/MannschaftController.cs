@@ -29,7 +29,7 @@ namespace Mannschaftsverwaltung.Controllers
                 {
                     int MSID = reader.GetInt16(0);
                     List<Person> PSLS = getPersonen(MSID);
-                    ListMS.Add(new Mannschaft(reader.GetString(1), PSLS));
+                    ListMS.Add(new Mannschaft(reader.GetString(1), PSLS, MSID));
                 }
                 con.Close();
                 return ListMS;
