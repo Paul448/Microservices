@@ -40,5 +40,10 @@ namespace Mannschaftsverwaltung.Controllers
             string retResponse = reader.ReadToEnd();
             return retResponse;
         }
+
+        public List<Person> GetPersonList(int vMS)
+        {
+            return MSLIST.Find(x => x.MID == vMS).Personen;
+        }
     }
 }

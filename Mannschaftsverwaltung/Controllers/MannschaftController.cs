@@ -50,7 +50,7 @@ namespace Mannschaftsverwaltung.Controllers
             MySqlDataReader reader2 = cmd.ExecuteReader();
             while(reader2.Read())
             {
-                ps.Add(new Person(reader2.GetString(0)));
+                ps.Add(new Person(reader2.GetString(1), reader2.GetInt32(0)));
             }
             con2.Close();
             return ps;
