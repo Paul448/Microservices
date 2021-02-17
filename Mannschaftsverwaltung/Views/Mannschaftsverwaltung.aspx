@@ -12,8 +12,7 @@
         <div>
             <h1>Mannschaftsverwaltung</h1> <br />
             <asp:DropDownList ID="selectTeam" runat="server">
-                <asp:ListItem>Mannschaft1</asp:ListItem>
-                <asp:ListItem>Mannschaft2</asp:ListItem>
+                <asp:ListItem>Mannschaften</asp:ListItem>
             </asp:DropDownList>
         </div>
     </form>
