@@ -31,6 +31,7 @@ namespace Mannschaftsverwaltung.Views
 
         public void LoadList()
         {
+            // LOADLIST
             List<Mannschaft> MSTabelle = Verwalter.MSLIST;
             if (selectTeam.Items.Count == 1)
             {
