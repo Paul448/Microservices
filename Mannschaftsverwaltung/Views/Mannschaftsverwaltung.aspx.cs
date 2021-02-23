@@ -51,24 +51,34 @@ namespace Mannschaftsverwaltung.Views
 
         public void LoadPersonen(int MS)
         {
-            tblPersonen.Rows.Clear();
+            for (int i = 1; i < tblPersonen.Rows.Count; i++)
+            {
+                tblPersonen.Rows.RemoveAt(i);
+            }
+            tblPersonen.BorderWidth = 2;
+            tblPersonen.CellSpacing = 0;
             List<Person> PSLIST = Verwalter.GetPersonList(MS);
             TableCell tc = new TableCell();
+            tc.BorderWidth = 1;
             TableRow tr = new TableRow();
             foreach(var e in PSLIST)
             {
                 tc.Text = e.PID.ToString();
                 tr.Cells.Add(tc);
                 tc = new TableCell();
+                tc.BorderWidth = 1;
                 tc.Text = e.Name;
                 tr.Cells.Add(tc);
                 tc = new TableCell();
+                tc.BorderWidth = 1;
                 tc.Text = e.Geb.ToString();
                 tr.Cells.Add(tc);
                 tc = new TableCell();
+                tc.BorderWidth = 1;
                 tc.Text = MS.ToString();
                 tr.Cells.Add(tc);
                 tc = new TableCell();
+                tc.BorderWidth = 1;
                 tblPersonen.Rows.Add(tr);
                 tr = new TableRow();
             }
