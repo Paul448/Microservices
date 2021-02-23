@@ -83,5 +83,12 @@ namespace Mannschaftsverwaltung.Views
                 tr = new TableRow();
             }
         }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            Verwalter.DelMS(Convert.ToInt32(txtMID.Text));
+            Verwalter.LoadMS();
+            LoadList();
+        }
     }
 }

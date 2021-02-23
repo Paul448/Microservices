@@ -27,6 +27,13 @@ namespace Mannschaftsverwaltung.Controllers
             MSLIST = (List<Mannschaft>)JsonConvert.DeserializeObject(jsonMS, typeof(List<Mannschaft>));
         }
 
+        public void DelMS(int MID)
+        {
+            //MS PORT: 44336
+            string jsonMS = HTTPRequest("api/Mannschaft/Delete/" + MID + "/");
+        }
+
+
         public string HTTPRequest(string URI, string Port = "44336")
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://localhost:" + Port + "/" + URI);

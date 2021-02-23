@@ -39,6 +39,45 @@ namespace Mannschaftsverwaltung.Controllers
                 return null;
             }
         }
+
+        [Route("api/Mannschaft/Delete/{MID}")]
+        public bool Get(int MID = -1)
+        {
+            if(MID != -1)
+            {
+                string cnst = "Server=localhost;Database=microservicespro;Uid=root;";
+                MySqlConnection con = new MySqlConnection(cnst);
+                MySqlCommand cmd = new MySqlCommand("delete from mannschaft where MID ='" + MID + "'", con);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        [Route("api/Mannschaft/ADD")]
+        public bool Post(Mannschaft ms)
+        {
+            if (ms != null)
+            {
+                string cnst = "Server=localhost;Database=microservicespro;Uid=root;";
+                MySqlConnection con = new MySqlConnection(cnst);
+                string SQL = "insert into mannschaft(Name) values ('" + ms.Name + "')";
+                MySqlCommand cmd = new MySqlCommand(SQL, con);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public List<Person> getPersonen(int MS)
         {
             List<Person> ps = new List<Person>();
