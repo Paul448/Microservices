@@ -60,7 +60,7 @@ namespace Mannschaftsverwaltung.Controllers
         }
 
         [Route("api/Mannschaft/ADD")]
-        public bool Post(Mannschaft ms)
+        public bool Post([FromBody]Mannschaft ms)
         {
             if (ms != null)
             {

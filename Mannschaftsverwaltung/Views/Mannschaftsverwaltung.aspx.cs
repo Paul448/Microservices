@@ -90,5 +90,13 @@ namespace Mannschaftsverwaltung.Views
             Verwalter.LoadMS();
             LoadList();
         }
+
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+            Mannschaft neu = new Mannschaft(txtNAME.Text, null);
+            Verwalter.AddMS(neu);
+            Verwalter.LoadMS();
+            LoadList();
+        }
     }
 }

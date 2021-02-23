@@ -28,7 +28,7 @@
             <h2>Mannschaften Verwalten</h2>
             MID: <asp:TextBox ID="txtMID" runat="server" TextMode="Number"></asp:TextBox> <asp:Button runat="server" ID="btnDelete" Text="Del" BackColor="Red" BorderWidth="0" OnClick="btnDelete_Click"/> <br />
             NAME: <asp:TextBox runat="server" ID="txtNAME"></asp:TextBox>
-            <asp:Button ID="btnAdd" runat="server" Text="Hinzufügen" BackColor="LightGreen" BorderWidth="0"/> <br />
+            <asp:Button ID="btnAdd" runat="server" Text="Hinzufügen" BackColor="LightGreen" BorderWidth="0" OnClick="btnAdd_Click"/> <br />
             <h2>Personen Zuweisen</h2>
             <asp:DropDownList ID="listSpieler" runat="server"><asp:ListItem>Personen</asp:ListItem></asp:DropDownList> <asp:Button ID="btnZuweisen" runat="server" />
 

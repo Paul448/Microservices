@@ -32,7 +32,11 @@ namespace Mannschaftsverwaltung.Controllers
             //MS PORT: 44336
             string jsonMS = HTTPRequest("api/Mannschaft/Delete/" + MID + "/");
         }
-
+         public void AddMS(Mannschaft MS_ADD)
+        {
+            string json = JsonConvert.SerializeObject(MS_ADD);
+            PostJson(json, "api/mannschaft/add");
+        }
 
         public string HTTPRequest(string URI, string Port = "44336")
         {
@@ -51,6 +55,24 @@ namespace Mannschaftsverwaltung.Controllers
         public List<Person> GetPersonList(int vMS)
         {
             return MSLIST.Find(x => x.MID == vMS).Personen;
+        }
+
+        public void PostJson(string JsonToPost, string URI, string Port = "44336")
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://localhost:" + Port + "/" + URI);
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                streamWriter.Write(JsonToPost);
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+            }
         }
     }
 }
