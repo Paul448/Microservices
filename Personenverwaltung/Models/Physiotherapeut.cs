@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NetTest
+namespace Personenverwaltung.Models
 {
     public class Physiotherapeut : Person
     {

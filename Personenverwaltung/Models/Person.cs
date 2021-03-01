@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace NetTest
+namespace Personenverwaltung.Models
 {
     public abstract class Person
     {
