@@ -23,7 +23,7 @@ namespace Mannschaftsverwaltung.Controllers
         public void LoadMS()
         {
             //MS PORT: 44336
-            string jsonMS = HTTPRequest("api/Mannschaft");
+            string jsonMS = HTTPRequest("api/Mannschaft/GetMS");
             MSLIST = (List<Mannschaft>)JsonConvert.DeserializeObject(jsonMS, typeof(List<Mannschaft>));
         }
 
@@ -57,6 +57,13 @@ namespace Mannschaftsverwaltung.Controllers
             return MSLIST.Find(x => x.MID == vMS).Personen;
         }
 
+        public List<Person> GetFreePersons()
+        {
+            string JSON = HTTPRequest("api/mannschaft/GetPS/");
+            List<Person> neu = (List<Person>)JsonConvert.DeserializeObject(JSON, typeof(List<Person>));
+            return neu;
+        }
+
         public void PostJson(string JsonToPost, string URI, string Port = "44336")
         {
             var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://localhost:" + Port + "/" + URI);
@@ -73,6 +80,11 @@ namespace Mannschaftsverwaltung.Controllers
             {
                 var result = streamReader.ReadToEnd();
             }
+        }
+
+        public void AddPersonToMs(int PID, int MID)
+        {
+            string json = HTTPRequest("api/Mannschaft/Get/{" + PID + "}/{ " + MID + "}/");
         }
     }
 }

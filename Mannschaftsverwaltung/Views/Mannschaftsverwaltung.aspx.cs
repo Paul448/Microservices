@@ -20,6 +20,7 @@ namespace Mannschaftsverwaltung.Views
             Verwalter = new controller();
             Verwalter.LoadMS();
             LoadList();
+            LoadPersonList();
         } 
 
         public void Auth()
@@ -96,7 +97,28 @@ namespace Mannschaftsverwaltung.Views
             Mannschaft neu = new Mannschaft(txtNAME.Text, null);
             Verwalter.AddMS(neu);
             Verwalter.LoadMS();
+            selectTeam.Items.Clear();
+            selectTeam.Items.Add("Mannschaften");
             LoadList();
+        }
+
+        public void LoadPersonList()
+        {
+            listSpieler.Items.Clear();
+            List<Person> pslist = Verwalter.GetFreePersons();
+            foreach(var e in pslist)
+            {
+                listSpieler.Items.Add(e.PID + " - " + e.Name);
+            }
+        }
+
+        protected void btnZuweisen_Click(object sender, EventArgs e)
+        {
+            string[] vsplit = listSpieler.SelectedItem.Text.Split('-');
+            int vPID = Convert.ToInt32(vsplit[0].Trim());
+            vsplit = selectTeam.SelectedItem.Text.Split('-');
+            int vMID = Convert.ToInt32(vsplit[0].Trim());
+            Verwalter.AddPersonToMs(vPID, vMID);
         }
     }
 }

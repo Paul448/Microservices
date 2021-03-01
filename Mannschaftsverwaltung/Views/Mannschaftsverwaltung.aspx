@@ -30,7 +30,7 @@
             NAME: <asp:TextBox runat="server" ID="txtNAME"></asp:TextBox>
             <asp:Button ID="btnAdd" runat="server" Text="Hinzufügen" BackColor="LightGreen" BorderWidth="0" OnClick="btnAdd_Click"/> <br />
             <h2>Personen Zuweisen</h2>
-            <asp:DropDownList ID="listSpieler" runat="server"><asp:ListItem>Personen</asp:ListItem></asp:DropDownList> <asp:Button ID="btnZuweisen" runat="server" />
+            <asp:DropDownList ID="listSpieler" runat="server"><asp:ListItem>Personen</asp:ListItem></asp:DropDownList> <asp:Button ID="btnZuweisen" runat="server" text="Hinzufügen" OnClick="btnZuweisen_Click" />
 
         </div>
     </form>

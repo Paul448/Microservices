@@ -13,7 +13,7 @@ namespace Mannschaftsverwaltung.Controllers
     public class MannschaftController : ApiController
     {
         // GET: api/Mannschaft
-
+        [Route("api/Mannschaft/GetMS")]
         public List<Mannschaft> Get()
         {
             List<Mannschaft> ListMS = new List<Mannschaft>();
@@ -78,6 +78,7 @@ namespace Mannschaftsverwaltung.Controllers
                 return false;
             }
         }
+        [Route("api/Mannschaft/GetPersonen")]
         public List<Person> getPersonen(int MS)
         {
             List<Person> ps = new List<Person>();
@@ -93,6 +94,42 @@ namespace Mannschaftsverwaltung.Controllers
             }
             con2.Close();
             return ps;
+        } 
+        [Route("api/Mannschaft/GetPS")]
+        public List<Person> GetPS()
+        {
+            List<Person> ps = new List<Person>();
+            string cnst = "Server=localhost;Database=microservicespro;Uid=root;";
+            MySqlConnection con2 = new MySqlConnection(cnst);
+            con2.Open();
+            string sel = "SELECT * FROM Person where MID is null";
+            MySqlCommand cmd = new MySqlCommand(sel, con2);
+            MySqlDataReader reader2 = cmd.ExecuteReader();
+            while (reader2.Read())
+            {
+                ps.Add(new Person(reader2.GetString(1), reader2.GetInt32(0)));
+            }
+            con2.Close();
+            return ps;
+        }
+        [Route("api/Mannschaft/Get/{PID}/{MID}")]
+        public bool Get(int PID, int MID)
+        {
+            try
+            {
+                string cnst = "Server=localhost;Database=microservicespro;Uid=root;";
+                MySqlConnection con2 = new MySqlConnection(cnst);
+                con2.Open();
+                string sel = "update person set MID ='" + MID + "' where PID = '" + PID + "'";
+                MySqlCommand cmd = new MySqlCommand(sel, con2);
+                cmd.ExecuteNonQuery();
+                con2.Close();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
