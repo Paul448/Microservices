@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurnierverwaltungService", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mannschaftsverwaltung", "Mannschaftsverwaltung\Mannschaftsverwaltung.csproj", "{4BFFAAE7-B824-4793-A14B-23167558911D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Personenverwaltung", "Personenverwaltung\Personenverwaltung.csproj", "{A32E0DA3-8D3E-4A98-8807-5BFB6FCE1CC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{4BFFAAE7-B824-4793-A14B-23167558911D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BFFAAE7-B824-4793-A14B-23167558911D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BFFAAE7-B824-4793-A14B-23167558911D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A32E0DA3-8D3E-4A98-8807-5BFB6FCE1CC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A32E0DA3-8D3E-4A98-8807-5BFB6FCE1CC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A32E0DA3-8D3E-4A98-8807-5BFB6FCE1CC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A32E0DA3-8D3E-4A98-8807-5BFB6FCE1CC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
