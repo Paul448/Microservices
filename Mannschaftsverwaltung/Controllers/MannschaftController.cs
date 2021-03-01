@@ -112,7 +112,7 @@ namespace Mannschaftsverwaltung.Controllers
             con2.Close();
             return ps;
         }
-        [Route("api/Mannschaft/Get/{PID}/{MID}")]
+        [Route("api/Mannschaft/Update/{PID}/{MID}")]
         public bool Get(int PID, int MID)
         {
             try

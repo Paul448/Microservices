@@ -84,7 +84,8 @@ namespace Mannschaftsverwaltung.Controllers
 
         public void AddPersonToMs(int PID, int MID)
         {
-            string json = HTTPRequest("api/Mannschaft/Get/{" + PID + "}/{ " + MID + "}/");
+            string request = "api/Mannschaft/Update/" + PID + "/ " + MID + "/";
+            string json = HTTPRequest(request);
         }
     }
 }

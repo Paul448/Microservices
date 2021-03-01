@@ -19,8 +19,14 @@ namespace Mannschaftsverwaltung.Views
         {
             Verwalter = new controller();
             Verwalter.LoadMS();
-            LoadList();
-            LoadPersonList();
+            if(!this.IsPostBack)
+            {
+                LoadList();
+                LoadPersonList();
+            }
+            string[] vsplit = selectTeam.SelectedItem.Text.Split('-');
+            int vvMID = Convert.ToInt32(vsplit[0].Trim());
+            LoadPersonen(vvMID);
         } 
 
         public void Auth()
@@ -34,13 +40,12 @@ namespace Mannschaftsverwaltung.Views
         {
             // LOADLIST
             List<Mannschaft> MSTabelle = Verwalter.MSLIST;
-            if (selectTeam.Items.Count == 1)
-            {
+            selectTeam.Items.Clear();
                 foreach (var e in MSTabelle)
                 {
                     selectTeam.Items.Add(e.MID + " - " + e.Name);
                 }
-            }
+            
         }
 
         protected void selectTeam_SelectedIndexChanged(object sender, EventArgs e)
@@ -98,7 +103,6 @@ namespace Mannschaftsverwaltung.Views
             Verwalter.AddMS(neu);
             Verwalter.LoadMS();
             selectTeam.Items.Clear();
-            selectTeam.Items.Add("Mannschaften");
             LoadList();
         }
 

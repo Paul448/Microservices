@@ -13,7 +13,6 @@
             <h1>Mannschaftsverwaltung</h1>
             <h2>Mannschaften View</h2>
             <asp:DropDownList ID="selectTeam" runat="server" AutoPostBack="true" OnSelectedIndexChanged="selectTeam_SelectedIndexChanged">
-                <asp:ListItem>Mannschaften</asp:ListItem>
             </asp:DropDownList> <br />
             <asp:Table ID="tblPersonen" runat="server">
                 <asp:TableHeaderRow>
