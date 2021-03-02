@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
+using Newtonsoft.Json;
 using Personenverwaltung.Models;
 
 namespace Personenverwaltung.Controllers
@@ -19,11 +20,10 @@ namespace Personenverwaltung.Controllers
             ListPS.Add(new Fussballspieler());
         }
 
-        public List<Person> GetAllPersons()
+        public void GetAllPersons()
         {
             string json = HTTPRequest("API/Person");
-
-            return ListPS;
+            ListPS = (List<Person>)JsonConvert.DeserializeObject(json, typeof(List<Person>));
         }
 
         public string HTTPRequest(string URI, string Port = "44328")
