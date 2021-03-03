@@ -18,6 +18,16 @@
                     <asp:TableCell>Nachname:</asp:TableCell>
                     <asp:TableCell>TYP:</asp:TableCell>
                 </asp:TableHeaderRow>
+            </asp:Table> <br />
+            <h1>Userverwaltung</h1> <br />
+            <asp:Table runat="server" ID="tblUser">
+                <asp:TableHeaderRow>
+                    <asp:TableCell>UID:</asp:TableCell>
+                    <asp:TableCell>Name:</asp:TableCell>
+                    <asp:TableCell>Status:</asp:TableCell>
+                    <asp:TableCell>Info:</asp:TableCell>
+                    <asp:TableCell>Hash:</asp:TableCell>
+                </asp:TableHeaderRow>
             </asp:Table>
         </div>
     </form>

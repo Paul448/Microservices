@@ -22,11 +22,13 @@ namespace Personenverwaltung.Views
                 Verwalter = new controller();
                 
             }
-            Verwalter.GetAllPersons();
-            LoadTable();
+            //Verwalter.GetAllPersons();
+            Verwalter.GetAllUser();
+            LoadTablePerson();
+            LoadTableUser();
         }
 
-        public void LoadTable()
+        public void LoadTablePerson()
         {
             tblPersonen.BorderWidth = 2;
             tblPersonen.CellSpacing = 0;
@@ -48,6 +50,32 @@ namespace Personenverwaltung.Views
                 tr.Cells.Add(tc);
                 tc = new TableCell();
                 tblPersonen.Rows.Add(tr);
+                tr = new TableRow();
+            }
+        }
+
+        public void LoadTableUser()
+        {
+            tblUser.BorderWidth = 2;
+            tblUser.CellSpacing = 0;
+            tblUser.Rows.Clear();
+            List<user> ps = Verwalter.ULIST;
+            TableCell tc = new TableCell();
+            TableRow tr = new TableRow();
+            foreach (var e in ps)
+            {
+                tc.Text = e.UID.ToString();
+                tr.Cells.Add(tc);
+                tc = new TableCell();
+                tc.BorderWidth = 1;
+                tc.Text = e.Name;
+                tr.Cells.Add(tc);
+                tc = new TableCell();
+                tc.BorderWidth = 1;
+                tc.Text = e.Status;
+                tr.Cells.Add(tc);
+                tc = new TableCell();
+                tblUser.Rows.Add(tr);
                 tr = new TableRow();
             }
         }

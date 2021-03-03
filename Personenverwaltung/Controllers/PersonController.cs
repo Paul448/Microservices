@@ -46,11 +46,11 @@ namespace Personenverwaltung.Controllers
             try
             {
                 con.Open();
-                MySqlCommand cmd = new MySqlCommand("Select * from User", con);
+                MySqlCommand cmd = new MySqlCommand("Select * from Users", con);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while(reader.Read())
                 {
-                    userlist.Add(new user(reader.GetInt32("UID"), reader.GetString("Name"), reader.GetString("Status"), reader.GetString("Info"), reader.GetString("Pass")))
+                    userlist.Add(new user(reader.GetInt32("UID"), reader.GetString("Name"), reader.GetString("Status"), reader.GetString("Info"), reader.GetString("Pass")));
                 }
             }
             catch
