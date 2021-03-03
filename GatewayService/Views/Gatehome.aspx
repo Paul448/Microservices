@@ -12,6 +12,7 @@
         <div>   
             <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click"/> <br />
             <asp:Button ID="btnAdmin" runat="server" Text="Admin-Panel" OnClick="btnAdmin_Click"/> <br />
+            <asp:Button ID="btnPS" runat="server" Text="User/Personenverwaltung" OnClick="btnPS_Click"/> <br />
             <asp:Button ID="btnTurnier" runat="server" Text="Turnierverwaltung" OnClick="btnTurnier_Click"/> <br />
             <asp:Button ID="btnMannschaft" runat="server" Text="Mannschaftsverwaltung" OnClick="btnMannschaft_Click"/> <br />
             <asp:Label ID="lblAuth" runat="server" Text="Auth: Error"></asp:Label> 

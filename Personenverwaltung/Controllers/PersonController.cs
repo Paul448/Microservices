@@ -12,7 +12,8 @@ namespace Personenverwaltung.Controllers
     public class PersonController : ApiController
     {
         // GET: api/Person
-        public List<Person> Get()
+        [Route("api/Person/GetPerson")]
+        public List<Person> GetPerson()
         {
             List<Person> ListPS = new List<Person>();
             List<Mannschaft> ListMS = new List<Mannschaft>();
@@ -23,7 +24,7 @@ namespace Personenverwaltung.Controllers
                 con.Open();
                 MySqlCommand cmd = new MySqlCommand("select * from Fussballspieler", con);
                 MySqlDataReader reader = cmd.ExecuteReader();
-                while(reader.Read())
+                while (reader.Read())
                 {
                     ListPS.Add(new Fussballspieler(reader.GetString("Name"), reader.GetInt32("Tore"), reader.GetInt32("Siege"), reader.GetInt32("Nummer")));
                 }
@@ -34,7 +35,30 @@ namespace Personenverwaltung.Controllers
             {
                 return null;
             }
-
         }
+
+        [Route("api/Person/GetUser")]
+        public List<user> GetUser()
+        {
+            List<user> userlist = new List<user>();
+            string cnst = "Server=localhost;Database=microservicespro;Uid=root;";
+            MySqlConnection con = new MySqlConnection(cnst);
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand("Select * from User", con);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while(reader.Read())
+                {
+                    userlist.Add(new user(reader.GetInt32("UID"), reader.GetString("Name"), reader.GetString("Status"), reader.GetString("Info"), reader.GetString("Pass")))
+                }
+            }
+            catch
+            {
+
+            }
+            return userlist;
+        }
+
     }
 }

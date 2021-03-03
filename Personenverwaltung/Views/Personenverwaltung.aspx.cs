@@ -20,9 +20,10 @@ namespace Personenverwaltung.Views
             if(!this.IsPostBack)
             {
                 Verwalter = new controller();
-                Verwalter.GetAllPersons();
+                
             }
-
+            Verwalter.GetAllPersons();
+            LoadTable();
         }
 
         public void LoadTable()
@@ -30,7 +31,7 @@ namespace Personenverwaltung.Views
             tblPersonen.BorderWidth = 2;
             tblPersonen.CellSpacing = 0;
             tblPersonen.Rows.Clear();
-            List<Person> ps = (List<Person>)Verwalter.ListPS;
+            List<Person> ps = Verwalter.ListPS;
             TableCell tc = new TableCell();
             TableRow tr = new TableRow();
             foreach(var e in ps)

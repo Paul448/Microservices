@@ -12,7 +12,9 @@ namespace Personenverwaltung.Controllers
     public class controller
     {
         private List<Person> _ListPS;
+        private List<user> uLIST;
         public List<Person> ListPS { get => _ListPS; set => _ListPS = value; }
+        public List<user> ULIST { get => uLIST; set => uLIST = value; }
 
         public controller()
         {
@@ -22,9 +24,16 @@ namespace Personenverwaltung.Controllers
 
         public void GetAllPersons()
         {
-            string json = HTTPRequest("API/Person");
-            ListPS = (List<Person>)JsonConvert.DeserializeObject(json, typeof(List<Person>));
+            string json = HTTPRequest("API/Person/GetPerson");
+            var Test = JsonConvert.DeserializeObject<Fussballspieler>(json);
         }
+
+        public void GetAllUser()
+        {
+            string json = HTTPRequest("API/Person/GetUser");
+            ULIST = (List<user>)JsonConvert.DeserializeObject(json, typeof(List<user>));
+        }
+
 
         public string HTTPRequest(string URI, string Port = "44328")
         {

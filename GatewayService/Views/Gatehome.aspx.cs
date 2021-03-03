@@ -44,5 +44,11 @@ namespace GatewayService.Views
             Response.Redirect("https://localhost:44336/Views/Mannschaftsverwaltung?auth=" + AuthID);
             //44336
         }
+
+        protected void btnPS_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("https://localhost:44328/Views/Personenverwaltung?auth=" + AuthID);
+            
+        }
     }
 }

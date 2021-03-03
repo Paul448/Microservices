@@ -42,6 +42,15 @@ namespace GatewayService.Views
         protected global::System.Web.UI.WebControls.Button btnAdmin;
 
         /// <summary>
+        /// btnPS-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPS;
+
+        /// <summary>
         /// btnTurnier-Steuerelement
         /// </summary>
         /// <remarks>
