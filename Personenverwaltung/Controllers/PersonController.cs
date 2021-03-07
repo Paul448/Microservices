@@ -16,17 +16,16 @@ namespace Personenverwaltung.Controllers
         public List<Person> GetPerson()
         {
             List<Person> ListPS = new List<Person>();
-            List<Mannschaft> ListMS = new List<Mannschaft>();
             string cnst = "Server=localhost;Database=microservicespro;Uid=root;";
             MySqlConnection con = new MySqlConnection(cnst);
             try
             {
                 con.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from Fussballspieler", con);
+                MySqlCommand cmd = new MySqlCommand("select * from Person", con);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    ListPS.Add(new Fussballspieler(reader.GetString("Name"), reader.GetInt32("Tore"), reader.GetInt32("Siege"), reader.GetInt32("Nummer")));
+                    ListPS.Add(new Person(reader.GetString("Name"), reader.GetInt16("PID"), reader.GetString("Typ")));
                 }
                 con.Close();
                 return ListPS;
@@ -59,6 +58,39 @@ namespace Personenverwaltung.Controllers
             }
             return userlist;
         }
+        [Route("api/Person/GetDelUser/{PID}")]
+        public void GetDelUser(int PID)
+        {
+            List<user> userlist = new List<user>();
+            string cnst = "Server=localhost;Database=microservicespro;Uid=root;";
+            MySqlConnection con = new MySqlConnection(cnst);
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand("Delete from person where PID =" + PID, con);
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
 
+            }
+        }
+        [Route("api/Person/GetAddUser/{Name}/{Typ}")]
+        public void GetAddUser(string Name, string Typ)
+        {
+            string cnst = "Server=localhost;Database=microservicespro;Uid=root;";
+            MySqlConnection con = new MySqlConnection(cnst);
+            try
+            {
+                con.Open();
+                string SQL = "insert into Person(Name, Typ) Values ('" + Name + "', '" + Typ + "')";
+                MySqlCommand cmd = new MySqlCommand(SQL, con);
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+
+            }
+        }
     }
 }

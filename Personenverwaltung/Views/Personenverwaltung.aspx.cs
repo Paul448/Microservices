@@ -19,10 +19,10 @@ namespace Personenverwaltung.Views
         {
             if(!this.IsPostBack)
             {
-                Verwalter = new controller();
-                
+                //Verwalter = new controller();
             }
-            //Verwalter.GetAllPersons();
+            Verwalter = new controller();
+            Verwalter.GetAllPersons();
             Verwalter.GetAllUser();
             LoadTablePerson();
             LoadTableUser();
@@ -38,7 +38,7 @@ namespace Personenverwaltung.Views
             TableRow tr = new TableRow();
             foreach(var e in ps)
             {
-                tc.Text = e.ID.ToString();
+                tc.Text = e.PID.ToString();
                 tr.Cells.Add(tc);
                 tc = new TableCell();
                 tc.BorderWidth = 1;
@@ -46,7 +46,7 @@ namespace Personenverwaltung.Views
                 tr.Cells.Add(tc);
                 tc = new TableCell();
                 tc.BorderWidth = 1;
-                tc.Text = e.Geburtsdatum.ToString();
+                tc.Text = e.Typ;
                 tr.Cells.Add(tc);
                 tc = new TableCell();
                 tblPersonen.Rows.Add(tr);
@@ -78,6 +78,19 @@ namespace Personenverwaltung.Views
                 tblUser.Rows.Add(tr);
                 tr = new TableRow();
             }
+        }
+
+        protected void btnADD_Click(object sender, EventArgs e)
+        {
+            Person neu = new Person(txtName.Text, -1, txtTYP.Text);
+            Verwalter.AddPerson(neu);
+            LoadTablePerson();
+        }
+
+        protected void btnDEL_Click(object sender, EventArgs e)
+        {
+            Verwalter.DelPerson(Convert.ToInt32(txtDel.Text));
+            LoadTablePerson();
         }
     }
 }

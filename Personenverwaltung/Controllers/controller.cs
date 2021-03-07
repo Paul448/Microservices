@@ -19,13 +19,14 @@ namespace Personenverwaltung.Controllers
         public controller()
         {
             this.ListPS = new List<Person>();
-            ListPS.Add(new Fussballspieler());
+            ListPS.Add(new Person());
         }
 
         public void GetAllPersons()
         {
+            ListPS = new List<Person>();
             string json = HTTPRequest("API/Person/GetPerson");
-            var Test = JsonConvert.DeserializeObject<Fussballspieler>(json);
+            ListPS = (List<Person>)JsonConvert.DeserializeObject(json, typeof(List<Person>));
         }
 
         public void GetAllUser()
@@ -47,6 +48,18 @@ namespace Personenverwaltung.Controllers
             StreamReader reader = new StreamReader(recieve);
             string retResponse = reader.ReadToEnd();
             return retResponse;
+        }
+
+        public void DelPerson(int PID)
+        {
+            HTTPRequest("api/Person/GetDelUser/" + PID);
+            GetAllPersons();
+        }
+
+        public void AddPerson(Person neu)
+        {
+            HTTPRequest("api/Person/GetAddUser/" + neu.Name + "/" + neu.Typ);
+            GetAllPersons();
         }
     }
 }
