@@ -34,6 +34,11 @@ namespace Personenverwaltung.Views
             tblPersonen.CellSpacing = 0;
             tblPersonen.Rows.Clear();
             List<Person> ps = Verwalter.ListPS;
+            if(ps == null)
+            {
+                ps = new List<Person>();
+                ps.Add(new Person("MYSQL ERROR - NO DB"));
+            }
             TableCell tc = new TableCell();
             TableRow tr = new TableRow();
             foreach(var e in ps)
