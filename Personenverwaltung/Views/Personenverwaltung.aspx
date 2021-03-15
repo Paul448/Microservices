@@ -34,7 +34,14 @@
                     <asp:TableCell>Info:</asp:TableCell>
                     <asp:TableCell>Hash:</asp:TableCell>
                 </asp:TableHeaderRow>
-            </asp:Table>
+            </asp:Table> <br />
+            <h3>USER Hinzufügen</h3> <br />
+            NAME:<asp:TextBox ID="txtNewUsername" runat="server"></asp:TextBox> <br />
+            Status <asp:DropDownList ID="newUserStatus" runat="server">
+                        <asp:ListItem>USER</asp:ListItem>
+                        <asp:ListItem>ADMIN</asp:ListItem>
+                   </asp:DropDownList> <br />
+            <asp:TextBox ID="txtUserAddPW" runat="server"></asp:TextBox>
         </div>
     </form>
 </body>
