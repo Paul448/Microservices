@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Erstellungszeit: 15. Mrz 2021 um 20:49
--- Server-Version: 10.4.17-MariaDB
--- PHP-Version: 8.0.1
+-- Host: localhost:3306
+-- Erstellungszeit: 18. Mrz 2021 um 12:05
+-- Server-Version: 10.1.37-MariaDB
+-- PHP-Version: 7.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -92,6 +93,68 @@ INSERT INTO `ps_ms` (`PSMS_ID`, `MID`, `PID`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Tabellenstruktur für Tabelle `spiele`
+--
+
+CREATE TABLE `spiele` (
+  `SPID` int(11) NOT NULL,
+  `TID` int(11) DEFAULT NULL,
+  `MS1ID` int(11) DEFAULT NULL,
+  `MS2ID` int(11) DEFAULT NULL,
+  `Ergebnis1` int(11) DEFAULT NULL,
+  `Ergebnis2` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `spiele`
+--
+
+INSERT INTO `spiele` (`SPID`, `TID`, `MS1ID`, `MS2ID`, `Ergebnis1`, `Ergebnis2`) VALUES
+(1, 1, 2, 7, 3, 9);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `tms`
+--
+
+CREATE TABLE `tms` (
+  `TMS` int(11) NOT NULL,
+  `TID` int(11) DEFAULT NULL,
+  `MID` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `tms`
+--
+
+INSERT INTO `tms` (`TMS`, `TID`, `MID`) VALUES
+(1, 1, 2),
+(2, 1, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `turnier`
+--
+
+CREATE TABLE `turnier` (
+  `TID` int(11) NOT NULL,
+  `Datum` date DEFAULT NULL,
+  `name` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `turnier`
+--
+
+INSERT INTO `turnier` (`TID`, `Datum`, `name`) VALUES
+(1, '2021-03-18', 'Erstes Testturnier'),
+(2, '2021-03-18', 'Zweites Testturnier');
+
+-- --------------------------------------------------------
+
+--
 -- Tabellenstruktur für Tabelle `users`
 --
 
@@ -137,6 +200,29 @@ ALTER TABLE `ps_ms`
   ADD KEY `FKPID` (`PID`);
 
 --
+-- Indizes für die Tabelle `spiele`
+--
+ALTER TABLE `spiele`
+  ADD PRIMARY KEY (`SPID`),
+  ADD KEY `FK_TIDSPIELE` (`TID`),
+  ADD KEY `FK_MS1` (`MS1ID`),
+  ADD KEY `FK_MS2` (`MS2ID`);
+
+--
+-- Indizes für die Tabelle `tms`
+--
+ALTER TABLE `tms`
+  ADD PRIMARY KEY (`TMS`),
+  ADD KEY `FK_TID` (`TID`),
+  ADD KEY `FK_MID` (`MID`);
+
+--
+-- Indizes für die Tabelle `turnier`
+--
+ALTER TABLE `turnier`
+  ADD PRIMARY KEY (`TID`);
+
+--
 -- Indizes für die Tabelle `users`
 --
 ALTER TABLE `users`
@@ -165,6 +251,24 @@ ALTER TABLE `ps_ms`
   MODIFY `PSMS_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT für Tabelle `spiele`
+--
+ALTER TABLE `spiele`
+  MODIFY `SPID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT für Tabelle `tms`
+--
+ALTER TABLE `tms`
+  MODIFY `TMS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT für Tabelle `turnier`
+--
+ALTER TABLE `turnier`
+  MODIFY `TID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT für Tabelle `users`
 --
 ALTER TABLE `users`
@@ -180,6 +284,21 @@ ALTER TABLE `users`
 ALTER TABLE `ps_ms`
   ADD CONSTRAINT `FKMID` FOREIGN KEY (`MID`) REFERENCES `mannschaft` (`MID`) ON DELETE CASCADE,
   ADD CONSTRAINT `FKPID` FOREIGN KEY (`PID`) REFERENCES `person` (`PID`) ON DELETE CASCADE;
+
+--
+-- Constraints der Tabelle `spiele`
+--
+ALTER TABLE `spiele`
+  ADD CONSTRAINT `FK_MS1` FOREIGN KEY (`MS1ID`) REFERENCES `mannschaft` (`MID`),
+  ADD CONSTRAINT `FK_MS2` FOREIGN KEY (`MS2ID`) REFERENCES `mannschaft` (`MID`),
+  ADD CONSTRAINT `FK_TIDSPIELE` FOREIGN KEY (`TID`) REFERENCES `turnier` (`TID`);
+
+--
+-- Constraints der Tabelle `tms`
+--
+ALTER TABLE `tms`
+  ADD CONSTRAINT `FK_MID` FOREIGN KEY (`MID`) REFERENCES `mannschaft` (`MID`),
+  ADD CONSTRAINT `FK_TID` FOREIGN KEY (`TID`) REFERENCES `turnier` (`TID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
