@@ -85,7 +85,7 @@ namespace Mannschaftsverwaltung.Controllers
             string cnst = "Server=localhost;Database=microservicespro;Uid=root;";
             MySqlConnection con2 = new MySqlConnection(cnst);
             con2.Open();
-            string sel = "select * from person where MID ='" + MS + "'";
+            string sel = "select Person.* from person inner join (select * from PS_MS where MID = '" + MS + "') as PSMS on person.PID = PSMS.PID";
             MySqlCommand cmd = new MySqlCommand(sel, con2);
             MySqlDataReader reader2 = cmd.ExecuteReader();
             while(reader2.Read())
@@ -102,7 +102,7 @@ namespace Mannschaftsverwaltung.Controllers
             string cnst = "Server=localhost;Database=microservicespro;Uid=root;";
             MySqlConnection con2 = new MySqlConnection(cnst);
             con2.Open();
-            string sel = "SELECT * FROM Person where MID is null";
+            string sel = "SELECT Person.* FROM Person left join PS_MS on PS_MS.PID = PERSON.PID where PS_MS.PID is null";
             MySqlCommand cmd = new MySqlCommand(sel, con2);
             MySqlDataReader reader2 = cmd.ExecuteReader();
             while (reader2.Read())
@@ -120,7 +120,7 @@ namespace Mannschaftsverwaltung.Controllers
                 string cnst = "Server=localhost;Database=microservicespro;Uid=root;";
                 MySqlConnection con2 = new MySqlConnection(cnst);
                 con2.Open();
-                string sel = "update person set MID ='" + MID + "' where PID = '" + PID + "'";
+                string sel = "insert into ps_ms (MID, PID) Values (" + MID + "," + PID + ")";
                 MySqlCommand cmd = new MySqlCommand(sel, con2);
                 cmd.ExecuteNonQuery();
                 con2.Close();

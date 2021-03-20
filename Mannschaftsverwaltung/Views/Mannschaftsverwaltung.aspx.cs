@@ -59,7 +59,7 @@ namespace Mannschaftsverwaltung.Views
         {
             for (int i = 1; i < tblPersonen.Rows.Count; i++)
             {
-                tblPersonen.Rows.RemoveAt(i);
+                    tblPersonen.Rows.RemoveAt(i);
             }
             tblPersonen.BorderWidth = 2;
             tblPersonen.CellSpacing = 0;
@@ -123,6 +123,10 @@ namespace Mannschaftsverwaltung.Views
             vsplit = selectTeam.SelectedItem.Text.Split('-');
             int vMID = Convert.ToInt32(vsplit[0].Trim());
             Verwalter.AddPersonToMs(vPID, vMID);
+            Verwalter.LoadMS();
+            string[] vsplit2 = selectTeam.SelectedItem.Text.Split('-');
+            int v1MID = Convert.ToInt32(vsplit2[0].Trim());
+            LoadPersonen(v1MID);
         }
     }
 }

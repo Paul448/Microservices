@@ -11,7 +11,18 @@
     <form id="form1" runat="server">
         <div>
             <h1>Turnierverwaltung</h1> <br />
-            <asp:Label ID="lblInfo" runat="server" Text=""></asp:Label>
+            <h3>Turniere:</h3>
+            <asp:DropDownList ID="DDTurnier" runat="server"></asp:DropDownList> <br />
+            <h3>Teilnehmende Mannschaften</h3> 
+            <asp:Table runat="server" ID="TblMS"></asp:Table>
+            <h3>Spiele</h3>
+            <asp:Table ID="tblSpiele" runat="server"></asp:Table> <br />
+            Spiel Hinzufügen: <br />
+            Mannschaft 1: <asp:DropDownList></asp:DropDownList> <br />
+            Mannschaft 2: <asp:DropDownList></asp:DropDownList> <br />
+            Ergebnis (MS1): <asp:TextBox ID="txtErgebnisMS1" runat="server" TextMode="Number"></asp:TextBox> <br />
+            Ergebnis (MS2): <asp:TextBox ID="txtErgebnisMS2" runat="server" TextMode="Number"></asp:TextBox> <br />
+            <asp:Button ID="btnAddSpiel" runat="server" Text="OK" />
         </div>
     </form>
 </body>
