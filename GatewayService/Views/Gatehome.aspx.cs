@@ -36,7 +36,7 @@ namespace GatewayService.Views
 
         protected void btnTurnier_Click(object sender, EventArgs e)
         {
-            Response.Redirect("https://localhost:44330/Views/Adminpanel?auth=" + AuthID);
+            Response.Redirect("https://localhost:44399/Views/Turnierverwaltung?auth=" + AuthID);
         }
 
         protected void btnMannschaft_Click(object sender, EventArgs e)

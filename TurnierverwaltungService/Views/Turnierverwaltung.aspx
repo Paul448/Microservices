@@ -18,8 +18,8 @@
             <h3>Spiele</h3>
             <asp:Table ID="tblSpiele" runat="server"></asp:Table> <br />
             Spiel Hinzufügen: <br />
-            Mannschaft 1: <asp:DropDownList></asp:DropDownList> <br />
-            Mannschaft 2: <asp:DropDownList></asp:DropDownList> <br />
+            Mannschaft 1: <asp:DropDownList runat="server"></asp:DropDownList> <br />
+            Mannschaft 2: <asp:DropDownList runat="server"></asp:DropDownList> <br />
             Ergebnis (MS1): <asp:TextBox ID="txtErgebnisMS1" runat="server" TextMode="Number"></asp:TextBox> <br />
             Ergebnis (MS2): <asp:TextBox ID="txtErgebnisMS2" runat="server" TextMode="Number"></asp:TextBox> <br />
             <asp:Button ID="btnAddSpiel" runat="server" Text="OK" />
