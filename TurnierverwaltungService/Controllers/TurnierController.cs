@@ -1,26 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net;
-using System.Web;
+using System.Net.Http;
+using System.Web.Http;
+using TurnierverwaltungService.Models;
+using MySql.Data.MySqlClient;
 
 namespace TurnierverwaltungService.Controllers
 {
-    public class TurnierController
+    public class TurnierController : ApiController
     {
-        public string GetHTTP(string URI, string Port = "44338")
+        // GET: api/Trunier
+        
+        public List<Turnier> GetTurniere()
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://localhost:" + Port + "/" + URI);
-            request.Method = "GET";
-            request.MaximumAutomaticRedirections = 4;
-            request.MaximumResponseHeadersLength = 4;
-            request.Credentials = CredentialCache.DefaultCredentials;
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            Stream recieve = response.GetResponseStream();
-            StreamReader reader = new StreamReader(recieve);
-            string Auth1 = reader.ReadToEnd();
-            return Auth1;
+            List<Turnier> ListTurnier = new List<Turnier>();
+            string cnst = "Server=localhost;Database=microservicespro;Uid=root;";
+            MySqlConnection connect = new MySqlConnection(cnst);
+            string sel = "select * from turnier";
+            MySqlCommand cmd = new MySqlCommand(sel, connect);
+            connect.Open();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while(reader.Read())
+            {
+                ListTurnier.Add(new Turnier(reader.GetString(1), reader.GetInt32(0)));
+            }
+            return ListTurnier;
+        }
+
+        public List<spiele> GetSpiele(int TID) // Spiele die zum Turnier gehören
+        {
+
+            return new List<spiele>();
+        }
+
+        public List<Mannschaft> GetMannschaft(int TID) // Mannschaften die zum Turnier gehören
+        {
+
+            return new List<Mannschaft>();
         }
     }
 }

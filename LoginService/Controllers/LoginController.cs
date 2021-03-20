@@ -41,14 +41,15 @@ namespace LoginService.Controllers
                 }
                 if(count != 0)
                 {
+                    con.Close();
                     string AuthID = RandomString(20);
                     return AuthID;
                 }
                 else
                 {
+                    con.Close();
                     return "0";
                 }
-                con.Close();
             }
             catch(Exception e)
             {
