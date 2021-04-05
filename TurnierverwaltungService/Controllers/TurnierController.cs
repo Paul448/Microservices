@@ -24,7 +24,7 @@ namespace TurnierverwaltungService.Controllers
             MySqlDataReader reader = cmd.ExecuteReader();
             while(reader.Read())
             {
-                ListTurnier.Add(new Turnier(reader.GetString(1), reader.GetInt32(0)));
+                ListTurnier.Add(new Turnier(reader.GetString(2), reader.GetInt32(0)));
             }
 
             foreach(var e in ListTurnier)
@@ -62,7 +62,7 @@ namespace TurnierverwaltungService.Controllers
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                ListMS.Add(new Mannschaft());
+                ListMS.Add(new Mannschaft(reader.GetString(2)));
             }
             return ListMS;
         }

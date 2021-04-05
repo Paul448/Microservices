@@ -11,25 +11,30 @@ namespace TurnierverwaltungService.Controllers
 {
     public class controller
     {
-        private List<Turnier> _TurnierList;
 
-        public List<Turnier> TurnierList { get => _TurnierList; set => _TurnierList = value; }
 
         public controller()
         {
-            TurnierList = new List<Turnier>();
-            LoadTurniere("GetTurniere");
+            
+        }
+        public List<Turnier> GetTurniere()
+        {
+            string json = GetHTTP("GetTurniere");
+            List<Turnier> RET = (List<Turnier>)JsonConvert.DeserializeObject(json, typeof(List<Turnier>));
+            return RET;
         }
 
-        public void LoadTurniere(string URI)
+
+
+        public string GetHTTP(string URI2)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://localhost:44399/API/Turnier/" + URI);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://localhost:44399/API/Turnier/" + URI2);
             request.Method = "GET";
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             Stream recieve = response.GetResponseStream();
             StreamReader reader = new StreamReader(recieve);
             string ResponseText = reader.ReadToEnd();
-            this.TurnierList = (List<Turnier>)JsonConvert.DeserializeObject(ResponseText, typeof(List<Turnier>));
+            return ResponseText;
         }
     }
 }

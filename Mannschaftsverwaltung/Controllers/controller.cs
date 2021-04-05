@@ -65,7 +65,7 @@ namespace Mannschaftsverwaltung.Controllers
         }
 
         public void PostJson(string JsonToPost, string URI, string Port = "44336")
-        {
+        { 
             var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://localhost:" + Port + "/" + URI);
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "POST";
