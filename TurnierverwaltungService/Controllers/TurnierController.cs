@@ -67,5 +67,23 @@ namespace TurnierverwaltungService.Controllers
             }
             return ListMS;
         }
+        [Route("API/Turnier/AddSpiel")]
+        public bool AddSpiel([FromBody]spiele sp)
+        {
+            string sql = "insert into spiele (TID, MS1ID, MS2ID, Ergebnis1, Ergebnis2) Values (" + sp.TurnierID + ", " + sp.MS1 + ", " + sp.MS2 + ", " + sp.Ergebnis1 + ", " + sp.Ergebnis2 + ")"; 
+            string cnst = "Server=localhost;Database=microservicespro;Uid=root;";
+            MySqlConnection connect = new MySqlConnection(cnst);
+            MySqlCommand cmd = new MySqlCommand(sql, connect);
+            try
+            {
+                connect.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+        }
     }
 }

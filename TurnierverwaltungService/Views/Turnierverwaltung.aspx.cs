@@ -158,6 +158,12 @@ namespace TurnierverwaltungService.Views
             int vMS1 = Convert.ToInt32(vsplit[0].Trim());
             vsplit = ddMS2.SelectedItem.Text.Split('-');
             int vMS2 = Convert.ToInt32(vsplit[0].Trim());
+            vsplit = DDTurnier.SelectedItem.Text.Split('-');
+            int vTID = Convert.ToInt32(vsplit[0].Trim());
+            int erg1 = Convert.ToInt32(txtErgebnisMS1.Text);
+            int erg2 =  Convert.ToInt32(txtErgebnisMS2.Text);
+            spiele spadd = new spiele(vTID, -1, vMS1, vMS2, erg1, erg2);
+            Verwalter.AddSpiel(spadd);
         }
     }
 }
