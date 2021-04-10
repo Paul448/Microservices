@@ -12,7 +12,7 @@ namespace TurnierverwaltungService.Controllers
     public class TurnierController : ApiController
     {
         // GET: api/Trunier
-        
+        [Route("API/Turnier/GetTurniere")]
         public List<Turnier> GetTurniere()
         {
             List<Turnier> ListTurnier = new List<Turnier>();
@@ -51,6 +51,7 @@ namespace TurnierverwaltungService.Controllers
             return ListSpiele;
         }
 
+        [Route("API/Turnier/GetMS/{TID}")]
         public List<Mannschaft> GetMannschaft(int TID) // Mannschaften die zum Turnier gehören
         {
             List<Mannschaft> ListMS = new List<Mannschaft>();

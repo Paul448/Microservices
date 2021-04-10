@@ -24,7 +24,12 @@ namespace TurnierverwaltungService.Controllers
             return RET;
         }
 
-
+        public List<Mannschaft> GetMS(int vTID = 1)
+        {
+            string json = GetHTTP("GetMS/" + vTID);
+            List<Mannschaft> RET = (List<Mannschaft>)JsonConvert.DeserializeObject(json, typeof(List<Mannschaft>));
+            return RET;
+        }
 
         public string GetHTTP(string URI2)
         {
