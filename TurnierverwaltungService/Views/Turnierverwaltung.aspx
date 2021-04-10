@@ -12,11 +12,11 @@
         <div>
             <h1>Turnierverwaltung</h1> <br />
             <h3>Turniere:</h3>
-            <asp:DropDownList ID="DDTurnier" runat="server"></asp:DropDownList> <br />
+            <asp:DropDownList ID="DDTurnier" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DDTurnier_SelectedIndexChanged"></asp:DropDownList> <br />
             <h3>Teilnehmende Mannschaften</h3> 
-            <asp:Table runat="server" ID="TblMS"></asp:Table>
+            <asp:Table runat="server" ID="TblMS" BorderStyle="Dashed"></asp:Table>
             <h3>Spiele</h3>
-            <asp:Table ID="tblSpiele" runat="server"></asp:Table> <br />
+            <asp:Table ID="tblSpiele" runat="server" BorderStyle="Dashed"></asp:Table> <br />
             Spiel Hinzufügen: <br />
             Mannschaft 1: <asp:DropDownList runat="server"></asp:DropDownList> <br />
             Mannschaft 2: <asp:DropDownList runat="server"></asp:DropDownList> <br />

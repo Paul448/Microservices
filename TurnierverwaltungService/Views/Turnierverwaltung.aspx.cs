@@ -17,54 +17,116 @@ namespace TurnierverwaltungService.Views
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Verwalter = new controller();
-            LoadUI();
+            if(!this.IsCallback)
+            {
+                Verwalter = new controller();
+                LoadUI();
+            }
         }
 
-        public void LoadUI()
+        public void LoadUI(int sTID = 1)
         {
+            tblSpiele.Rows.Clear();
+            TblMS.Rows.Clear();
             List<Turnier> TLIST = Verwalter.GetTurniere();
-            foreach(var e in TLIST)
+            if(!(DDTurnier.SelectedItem is null))
             {
-                DDTurnier.Items.Add(e.TID + " - " + e.TNAME);
+                string[] vsplit = DDTurnier.SelectedItem.Text.Split('-');
+                int vPID = Convert.ToInt32(vsplit[0].Trim());
+                sTID = vPID;
             }
+            else
+            {
 
+            }
+            if(DDTurnier.Items.Count == 0)
+            {
+                foreach (var e in TLIST)
+                {
+                    DDTurnier.Items.Add(e.TID + " - " + e.TNAME);
+                }
+            }
             List<Mannschaft> MSLIST = new List<Mannschaft>();
             foreach(var e in TLIST)
             {
-                foreach(var x in e.ListTeilnehmer)
+                if (e.TID == sTID)
                 {
-                    MSLIST.Add(x);
+                    foreach (var x in e.ListTeilnehmer)
+                    {
+                        MSLIST.Add(x);
+                    }
+                }
+                else
+                {
+
                 }
             }
 
             List<spiele> SpielList = new List<spiele>();
             foreach (var e in TLIST)
             {
-                foreach (var x in e.ListSpiele)
+                if (e.TID == sTID)
                 {
-                    SpielList.Add(x);
+                    foreach (var x in e.ListSpiele)
+                    {
+                        SpielList.Add(x);
+                    }
+                }
+                else
+                {
+
                 }
             }
 
+            TableRow tr = new TableRow();
+            TableCell tc = new TableCell();
+            tc.Text = "Mannschaft-ID";
+            tr.Cells.Add(tc);
+            tc = new TableCell();
+            tc.Text = "Mannschaft-Name";
+            tr.Cells.Add(tc);
+            TblMS.Rows.Add(tr);
+
             foreach (var e in MSLIST)
             {
-                TableRow tr = new TableRow();
-                TableCell tc = new TableCell();
+                tr = new TableRow();
+                tc = new TableCell();
+                tc.Text = e.MID.ToString();
+                tr.Cells.Add(tc);
+                tc = new TableCell();
                 tc.Text = e.MNAME;
                 tr.Cells.Add(tc);
                 TblMS.Rows.Add(tr);
             }
 
+            tr = new TableRow();
+            tc = new TableCell();
+            tc.Text = "Spiel-ID";
+            tr.Cells.Add(tc);
+            tc = new TableCell();
+            tc.Text = "MS1";
+            tr.Cells.Add(tc);
+            tc = new TableCell();
+            tc.Text = "MS2";
+            tr.Cells.Add(tc);
+            tblSpiele.Rows.Add(tr);
 
             foreach (var e in SpielList)
             {
-                TableRow tr = new TableRow();
-                TableCell tc = new TableCell();
+                tr = new TableRow();
+                tc = new TableCell();
                 tc.Text = e.SpielID.ToString();
+                tr.Cells.Add(tc);
+                tc = new TableCell();
+                tc.Text = e.MS1.ToString();
                 tr.Cells.Add(tc);
                 tblSpiele.Rows.Add(tr);
             }
+        }
+
+        protected void DDTurnier_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadUI();
         }
     }
 }

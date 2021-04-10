@@ -62,7 +62,7 @@ namespace TurnierverwaltungService.Controllers
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                ListMS.Add(new Mannschaft(reader.GetString(2)));
+                ListMS.Add(new Mannschaft(reader.GetString(2), reader.GetInt32(1)));
             }
             return ListMS;
         }
