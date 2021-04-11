@@ -51,6 +51,24 @@ namespace TurnierverwaltungService.Views
         protected global::System.Web.UI.WebControls.Table tblSpiele;
 
         /// <summary>
+        /// ddMSHinzu-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddMSHinzu;
+
+        /// <summary>
+        /// btnAddMS-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddMS;
+
+        /// <summary>
         /// ddMS1-Steuerelement
         /// </summary>
         /// <remarks>

@@ -149,7 +149,14 @@ namespace TurnierverwaltungService.Views
                 ddMS1.Items.Add(e.MID + " - " + e.MNAME);
                 ddMS2.Items.Add(e.MID + " - " + e.MNAME);
             }
-            
+            string[] vsplit = DDTurnier.SelectedItem.Text.Split('-');
+            int vTID = Convert.ToInt32(vsplit[0].Trim());
+            List<Mannschaft> MSOUTER = Verwalter.GetMSOuter(vTID);
+
+            foreach(var e in MSOUTER)
+            {
+                ddMSHinzu.Items.Add(e.MID + " - " + e.MNAME);
+            }
         }
 
         protected void btnAddSpiel_Click(object sender, EventArgs e)
@@ -164,6 +171,16 @@ namespace TurnierverwaltungService.Views
             int erg2 =  Convert.ToInt32(txtErgebnisMS2.Text);
             spiele spadd = new spiele(vTID, -1, vMS1, vMS2, erg1, erg2);
             Verwalter.AddSpiel(spadd);
+        }
+
+        protected void btnAddMS_Click(object sender, EventArgs e)
+        {
+            string[] vsplit = ddMSHinzu.SelectedItem.Text.Split('-');
+            int vMID = Convert.ToInt32(vsplit[0].Trim());
+            vsplit = DDTurnier.SelectedItem.Text.Split('-');
+            int vTID = Convert.ToInt32(vsplit[0].Trim());
+            Verwalter.AddTeilMS(vTID, vMID);
+            LoadUI();
         }
     }
 }

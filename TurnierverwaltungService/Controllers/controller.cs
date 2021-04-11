@@ -38,6 +38,18 @@ namespace TurnierverwaltungService.Controllers
             string test = PostHTTP("AddSpiel", json);
         }
 
+        public List<Mannschaft> GetMSOuter(int TID)
+        {
+            string json = GetHTTP("GetMSOUTER/" + TID );
+            List<Mannschaft> RET = (List<Mannschaft>)JsonConvert.DeserializeObject(json, typeof(List<Mannschaft>));
+            return RET;
+        }
+        
+        public string AddTeilMS(int TID, int MID)
+        {
+            string bool1 = GetHTTP("AddTeilMS/" + TID + "/" + MID);
+            return bool1;
+        }
         public string GetHTTP(string URI2)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://localhost:44399/API/Turnier/" + URI2);
