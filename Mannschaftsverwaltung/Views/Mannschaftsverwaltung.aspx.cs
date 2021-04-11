@@ -138,5 +138,21 @@ namespace Mannschaftsverwaltung.Views
             int v1MID = Convert.ToInt32(vsplit2[0].Trim());
             LoadPersonen(v1MID);
         }
+
+        protected void DirectTO(object sender, EventArgs e)
+        {
+            Button test = (Button)sender;
+            Uri uri = new Uri(HttpContext.Current.Request.Url.AbsoluteUri);
+            var query = HttpUtility.ParseQueryString(uri.Query);
+            string AuthID = query.Get("auth");
+            string ID = test.ID.Replace("ä", "/").Replace("ö", ":");
+            string Link = "https://" + ID + "?auth=" + AuthID;
+            Response.Redirect(Link);
+        }
+
+        protected void LogoutClick(object sender, EventArgs e)
+        {
+            Response.Redirect("https://localhost:44338/Views/Gatehome");
+        }
     }
 }

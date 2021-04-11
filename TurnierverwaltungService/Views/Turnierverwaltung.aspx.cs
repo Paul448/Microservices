@@ -203,5 +203,10 @@ namespace TurnierverwaltungService.Views
             string Link = "https://" + ID + "?auth=" + AuthID;
             Response.Redirect(Link);
         }
+
+        protected void LogoutClick(object sender, EventArgs e)
+        {
+            Response.Redirect("https://localhost:44338/Views/Gatehome");
+        }
     }
 }

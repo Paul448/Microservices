@@ -17,6 +17,14 @@ namespace GatewayService.Views
             var query = HttpUtility.ParseQueryString(uri.Query);
             AuthID = query.Get("auth");
             lblAuth.Text = "AuthID: " + AuthID;
+            if(AuthID == "" | AuthID is null | AuthID == " ")
+            {
+                lblInfo.Text = "Bitte melden sie sich an!";
+            }
+            else
+            {
+                lblInfo.Text = "";
+            }
         }
 
         protected void Page_Init(object sender, EventArgs e)
@@ -49,6 +57,22 @@ namespace GatewayService.Views
         {
             Response.Redirect("https://localhost:44328/Views/Personenverwaltung?auth=" + AuthID);
             
+        }
+
+        protected void DirectTO(object sender, EventArgs e)
+        {
+            Button test = (Button)sender;
+            Uri uri = new Uri(HttpContext.Current.Request.Url.AbsoluteUri);
+            var query = HttpUtility.ParseQueryString(uri.Query);
+            string AuthID = query.Get("auth");
+            string ID = test.ID.Replace("ä", "/").Replace("ö", ":");
+            string Link = "https://" + ID + "?auth=" + AuthID;
+            Response.Redirect(Link);
+        }
+
+        protected void LogoutClick(object sender, EventArgs e)
+        {
+            Response.Redirect("https://localhost:44330/Views/Login");
         }
     }
 }
