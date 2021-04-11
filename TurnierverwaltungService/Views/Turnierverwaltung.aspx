@@ -17,7 +17,7 @@
         <asp:Button runat="server" style="height:100%; width:100px;margin-right:10px; float:right;" ID="btnLogout" Text="LOGOUT" OnClick="LogoutClick"/>
     </div>
         <div>
-            <h1>Turnierverwaltung</h1> <br />
+            <h1>Turnierverwaltung</h1>
             <h3>Turniere:</h3>
             <asp:DropDownList ID="DDTurnier" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DDTurnier_SelectedIndexChanged"></asp:DropDownList> <br />
             <h3>Teilnehmende Mannschaften</h3> 

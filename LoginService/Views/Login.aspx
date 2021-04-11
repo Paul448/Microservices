@@ -15,7 +15,8 @@
             <h3>Passwort: </h3> <asp:TextBox ID="txtPW" runat="server" Width="150" Height="20" TextMode="Password"></asp:TextBox> <br /> <br />
             <asp:Button ID="btnOK" runat="server" Text="Anmelden" Width="150" Height="40" OnClick="btnOK_Click" /> <br />
             <asp:Label runat="server" ID="lblLoginInfo"></asp:Label> <br /> <br /> <br />
-            <asp:Button runat="server" ID="btnCheckAuth" Text="Check Login" OnClick="CheckAuth_Click" />
+            <asp:Button runat="server" ID="btnCheckAuth" Text="Check Login" OnClick="CheckAuth_Click" /> <br />
+            Testlogin: Benutzer: '123' Passwort: '123'
         </div>
     </form>
 </body>
