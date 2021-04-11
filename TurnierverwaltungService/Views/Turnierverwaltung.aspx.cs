@@ -158,21 +158,28 @@ namespace TurnierverwaltungService.Views
 
         protected void DDTurnier_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ddMS1.Items.Clear();
+            ddMS2.Items.Clear();
             LoadUI();
         }
 
         void LoadAddUI()
         {
-            ddMS1.Items.Clear();
-            ddMS2.Items.Clear();
-            List<Mannschaft> MS1 = Verwalter.GetMS();
-            foreach(var e in MS1)
-            {
-                ddMS1.Items.Add(e.MID + " - " + e.MNAME);
-                ddMS2.Items.Add(e.MID + " - " + e.MNAME);
-            }
             string[] vsplit = DDTurnier.SelectedItem.Text.Split('-');
             int vTID = Convert.ToInt32(vsplit[0].Trim());
+            List<Mannschaft> MS1 = Verwalter.GetMS(vTID);
+            if (ddMS1.Items.Count == 0 | MS1.Count != ddMS1.Items.Count)
+            {
+                ddMS1.Items.Clear();
+                ddMS2.Items.Clear();
+                foreach (var e in MS1)
+                {
+                    ddMS1.Items.Add(e.MID + " - " + e.MNAME);
+                    ddMS2.Items.Add(e.MID + " - " + e.MNAME);
+                }
+            }
+            vsplit = DDTurnier.SelectedItem.Text.Split('-');
+            vTID = Convert.ToInt32(vsplit[0].Trim());
             List<Mannschaft> MSOUTER = Verwalter.GetMSOuter(vTID);
             if (ddMSHinzu.Items.Count == 0 | ddMSHinzu.Items.Count != MSOUTER.Count)
             {
@@ -196,6 +203,7 @@ namespace TurnierverwaltungService.Views
             int erg2 =  Convert.ToInt32(txtErgebnisMS2.Text);
             spiele spadd = new spiele(vTID, -1, vMS1, vMS2, erg1, erg2);
             Verwalter.AddSpiel(spadd);
+            LoadUI();
         }
 
         protected void btnAddMS_Click(object sender, EventArgs e)
@@ -232,7 +240,10 @@ namespace TurnierverwaltungService.Views
 
         protected void btnDelTurnier_Click(object sender, EventArgs e)
         {
-
+            string[] vsplit = DDDelTurnier.SelectedItem.Text.Split('-');
+            int vTID = Convert.ToInt32(vsplit[0].Trim());
+            Verwalter.DelTurnier(vTID);
+            LoadUI();
         }
     }
 }
