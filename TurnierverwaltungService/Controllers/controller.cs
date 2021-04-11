@@ -44,7 +44,12 @@ namespace TurnierverwaltungService.Controllers
             List<Mannschaft> RET = (List<Mannschaft>)JsonConvert.DeserializeObject(json, typeof(List<Mannschaft>));
             return RET;
         }
-
+        public List<spiele> getSpiele(int vTID)
+        {
+            string json = GetHTTP("GetSpiele/" + vTID);
+            List<spiele> RET = (List<spiele>)JsonConvert.DeserializeObject(json, typeof(List<spiele>));
+            return RET;
+        }
         public void AddSpiel(spiele sp1)
         {
             string json = JsonConvert.SerializeObject(sp1);

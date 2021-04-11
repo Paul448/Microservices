@@ -34,7 +34,7 @@ namespace TurnierverwaltungService.Controllers
             }
             return ListTurnier;
         }
-
+        [Route("API/Turnier/GetSpiele/{TID}")]
         public List<spiele> GetSpiele(int TID) // Spiele die zum Turnier gehören
         {
             List<spiele> ListSpiele = new List<spiele>();
