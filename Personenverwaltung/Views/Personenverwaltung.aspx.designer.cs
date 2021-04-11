@@ -60,6 +60,15 @@ namespace Personenverwaltung.Views
         protected global::System.Web.UI.WebControls.Button localhostö44399äViewsäTurnierverwaltung;
 
         /// <summary>
+        /// localhostö44399äViewsäRankinganzeige-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button localhostö44399äViewsäRankinganzeige;
+
+        /// <summary>
         /// btnLogout-Steuerelement
         /// </summary>
         /// <remarks>

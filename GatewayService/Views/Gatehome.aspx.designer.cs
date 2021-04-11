@@ -78,6 +78,15 @@ namespace GatewayService.Views
         protected global::System.Web.UI.WebControls.Button btnLogout;
 
         /// <summary>
+        /// lbl1-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl1;
+
+        /// <summary>
         /// btnLogin-Steuerelement
         /// </summary>
         /// <remarks>
@@ -105,6 +114,15 @@ namespace GatewayService.Views
         protected global::System.Web.UI.WebControls.Button btnPS;
 
         /// <summary>
+        /// btnMannschaft-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMannschaft;
+
+        /// <summary>
         /// btnTurnier-Steuerelement
         /// </summary>
         /// <remarks>
@@ -114,13 +132,13 @@ namespace GatewayService.Views
         protected global::System.Web.UI.WebControls.Button btnTurnier;
 
         /// <summary>
-        /// btnMannschaft-Steuerelement
+        /// btnRanking-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMannschaft;
+        protected global::System.Web.UI.WebControls.Button btnRanking;
 
         /// <summary>
         /// lblAuth-Steuerelement

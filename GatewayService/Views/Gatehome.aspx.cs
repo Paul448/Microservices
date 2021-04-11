@@ -78,5 +78,10 @@ namespace GatewayService.Views
         {
             Response.Redirect("https://localhost:44330/Views/Login");
         }
+
+        protected void btnRanking_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("https://localhost:44399/Views/Rankinganzeige?auth=" + AuthID);
+        }
     }
 }

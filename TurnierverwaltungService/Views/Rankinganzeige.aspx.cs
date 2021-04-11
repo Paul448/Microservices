@@ -52,6 +52,9 @@ namespace TurnierverwaltungService.Views
             tc = new TableCell();
             tc.Text = "Punkte (Tore):";
             tr.Cells.Add(tc);
+            tc = new TableCell();
+            tc.Text = "Platzierung:";
+            tr.Cells.Add(tc);
             tblRanking.Rows.Add(tr);
             tc = new TableCell();
             tr = new TableRow();
@@ -92,11 +95,82 @@ namespace TurnierverwaltungService.Views
                 tblRanking.Rows.Add(tr);
                 tr = new TableRow();
             }
+            PickWinner();
         }
 
         protected void DDTurnier_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadUI();
+        }
+
+        protected void DirectTO(object sender, EventArgs e)
+        {
+            Button test = (Button)sender;
+            Uri uri = new Uri(HttpContext.Current.Request.Url.AbsoluteUri);
+            var query = HttpUtility.ParseQueryString(uri.Query);
+            string AuthID = query.Get("auth");
+            string ID = test.ID.Replace("ä", "/").Replace("ö", ":");
+            string Link = "https://" + ID + "?auth=" + AuthID;
+            Response.Redirect(Link);
+        }
+
+        protected void LogoutClick(object sender, EventArgs e)
+        {
+            Response.Redirect("https://localhost:44338/Views/Gatehome");
+        }
+
+        public void PickWinner()
+        {
+            if (tblRanking.Rows.Count >= 4)
+            {
+                int WinnerScore = 0;
+                int sec = 0;
+                int thr = 0;
+                int ROW1 = 0;
+                int ROW2 = 0;
+                int ROW3 = 0;
+                int index = 0;
+                foreach (TableRow x in tblRanking.Rows)
+                {
+
+                    if (int.TryParse(x.Cells[2].Text, out _))
+                    {
+                        if (Convert.ToInt32(x.Cells[2].Text) > WinnerScore)
+                        {
+                            sec = WinnerScore;
+                            thr = sec;
+                            WinnerScore = Convert.ToInt32(x.Cells[2].Text);
+                            ROW2 = ROW1;
+                            ROW1 = index;
+                        }
+                        else if (Convert.ToInt32(x.Cells[2].Text) > sec)
+                        {
+                            sec = WinnerScore;
+                            thr = sec;
+                            WinnerScore = Convert.ToInt32(x.Cells[2].Text);
+                            ROW3 = ROW2;
+                            ROW2 = index;
+                        }
+                        else if (Convert.ToInt32(x.Cells[2].Text) >= thr)
+                        {
+                            sec = WinnerScore;
+                            thr = sec;
+                            WinnerScore = Convert.ToInt32(x.Cells[2].Text);
+                            ROW3 = index;
+                        }
+                    }
+                    index++;
+                }
+                TableCell tc = new TableCell();
+                tc.Text = "Sieger!";
+                tblRanking.Rows[ROW1].Cells.Add(tc);
+                tc = new TableCell();
+                tc.Text = "Zweiter!";
+                tblRanking.Rows[ROW2].Cells.Add(tc);
+                tc = new TableCell();
+                tc.Text = "Dritter!";
+                tblRanking.Rows[ROW3].Cells.Add(tc);
+            }
         }
     }
 }

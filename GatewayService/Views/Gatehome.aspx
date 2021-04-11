@@ -18,13 +18,18 @@
         <asp:Button runat="server" style="height:100%; width:100px;margin-right:10px; float:right;" ID="btnLogout" Text="Login" OnClick="LogoutClick"/>
     </div> <br /> 
         <div>   
+            <asp:label runat="server" ID="lbl1" Font-Size="25" Text="Microservices - Paul Jansen" Font-Names="Verdana"></asp:label> <br />
+            <h3>Login:</h3>
             <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click"/> <br />
+            <h3>Anmeldepflichtig:</h3>
             <asp:Button ID="btnAdmin" runat="server" Text="Admin-Panel (OLD)" OnClick="btnAdmin_Click"/> <br />
             <asp:Button ID="btnPS" runat="server" Text="User/Personenverwaltung" OnClick="btnPS_Click"/> <br />
-            <asp:Button ID="btnTurnier" runat="server" Text="Turnierverwaltung" OnClick="btnTurnier_Click"/> <br />
             <asp:Button ID="btnMannschaft" runat="server" Text="Mannschaftsverwaltung" OnClick="btnMannschaft_Click"/> <br />
-            <asp:Label ID="lblAuth" runat="server" Text="Auth: Error"></asp:Label> 
-            <asp:Label ID="lblInfo" runat="server"></asp:Label>
+            <asp:Button ID="btnTurnier" runat="server" Text="Turnierverwaltung" OnClick="btnTurnier_Click"/> <br />
+            <h3>Keine Anmeldungspflicht:</h3>
+            <asp:Button ID="btnRanking" runat="server" Text="RankingView" OnClick="btnRanking_Click"/> <br /> <br /> <br />
+            <asp:Label ID="lblAuth" runat="server"  Font-Size="15" Text="Auth: Error"></asp:Label> 
+            <asp:Label ID="lblInfo" runat="server" Font-Size="15"></asp:Label>
         </div>
     </form>
 </body>
