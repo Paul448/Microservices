@@ -63,6 +63,12 @@ namespace TurnierverwaltungService.Controllers
             string bool1 = GetHTTP("AddTeilMS/" + TID + "/" + MID);
             return bool1;
         }
+
+        public string AddTurnier(string TNAME)
+        {
+            string back = GetHTTP("AddTurnier/" + TNAME);
+            return back;
+        }
         public string GetHTTP(string URI2, string PORT = "44399")
         {
             string url = "https://localhost:" + PORT + "/API/Turnier/" + URI2;

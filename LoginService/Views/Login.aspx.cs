@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Microservices
+// Autor: Paul Jansen
+// AI118 PRO
+//
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -43,6 +47,7 @@ namespace LoginService.Views
 
         public void CheckLogin()
         {
+            //Speichert einen AuthKey im Controller wird allerdings nicht mehr verwendet
             string var1 = this.Verwalter.AuthID;
             if (this.Verwalter.AuthID == "-1")
             {

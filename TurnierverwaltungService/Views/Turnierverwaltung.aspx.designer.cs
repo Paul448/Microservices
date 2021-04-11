@@ -114,6 +114,42 @@ namespace TurnierverwaltungService.Views
         protected global::System.Web.UI.WebControls.Button btnAddMS;
 
         /// <summary>
+        /// txtNewTurnier-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNewTurnier;
+
+        /// <summary>
+        /// btnAddTurnier-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddTurnier;
+
+        /// <summary>
+        /// DDDelTurnier-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDDelTurnier;
+
+        /// <summary>
+        /// btnDelTurnier-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDelTurnier;
+
+        /// <summary>
         /// ddMS1-Steuerelement
         /// </summary>
         /// <remarks>

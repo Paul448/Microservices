@@ -1,4 +1,8 @@
-﻿using Newtonsoft.Json.Linq;
+﻿// Microservices
+// Autor: Paul Jansen
+// AI118 PRO
+//
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;

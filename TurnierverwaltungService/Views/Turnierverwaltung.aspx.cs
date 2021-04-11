@@ -49,8 +49,9 @@ namespace TurnierverwaltungService.Views
             {
 
             }
-            if(DDTurnier.Items.Count == 0)
+            if(DDTurnier.Items.Count == 0 | DDTurnier.Items.Count != TLIST.Count)
             {
+                DDTurnier.Items.Clear();
                 foreach (var e in TLIST)
                 {
                     DDTurnier.Items.Add(e.TID + " - " + e.TNAME);
@@ -142,6 +143,17 @@ namespace TurnierverwaltungService.Views
                 tblSpiele.Rows.Add(tr);
             }
             LoadAddUI();
+
+            
+            List<Turnier> DDDelMS = Verwalter.GetTurniere();
+            if (DDDelTurnier.Items.Count == 0 | DDDelMS.Count != DDDelTurnier.Items.Count)
+            {
+                DDDelTurnier.Items.Clear();
+                foreach (var e in DDDelMS)
+                {
+                    DDDelTurnier.Items.Add(e.TID + " - " + e.TNAME);
+                }
+            }
         }
 
         protected void DDTurnier_SelectedIndexChanged(object sender, EventArgs e)
@@ -162,10 +174,13 @@ namespace TurnierverwaltungService.Views
             string[] vsplit = DDTurnier.SelectedItem.Text.Split('-');
             int vTID = Convert.ToInt32(vsplit[0].Trim());
             List<Mannschaft> MSOUTER = Verwalter.GetMSOuter(vTID);
-
-            foreach(var e in MSOUTER)
+            if (ddMSHinzu.Items.Count == 0 | ddMSHinzu.Items.Count != MSOUTER.Count)
             {
-                ddMSHinzu.Items.Add(e.MID + " - " + e.MNAME);
+                ddMSHinzu.Items.Clear();
+                foreach (var e in MSOUTER)
+                {
+                    ddMSHinzu.Items.Add(e.MID + " - " + e.MNAME);
+                }
             }
         }
 
@@ -207,6 +222,17 @@ namespace TurnierverwaltungService.Views
         protected void LogoutClick(object sender, EventArgs e)
         {
             Response.Redirect("https://localhost:44338/Views/Gatehome");
+        }
+
+        protected void btnAddTurnier_Click(object sender, EventArgs e)
+        {
+            Verwalter.AddTurnier(txtNewTurnier.Text);
+            LoadUI();
+        }
+
+        protected void btnDelTurnier_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

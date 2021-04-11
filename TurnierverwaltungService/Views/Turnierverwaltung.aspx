@@ -26,7 +26,12 @@
             <asp:Table ID="tblSpiele" runat="server" BorderStyle="Dashed"></asp:Table> <br />
             <h3>Teilnehmende Mannschaft Hinzufügen</h3> <br />
             <asp:DropDownList runat="server" ID="ddMSHinzu" ></asp:DropDownList> <br />
-            <asp:Button runat="server" Text="Hinzufügen" ID="btnAddMS" OnClick="btnAddMS_Click" />
+            <asp:Button runat="server" Text="Hinzufügen" ID="btnAddMS" OnClick="btnAddMS_Click" /> 
+            <h3>Turniere Hinzufügen / Löschen</h3>
+            Name:<asp:TextBox runat="server" ID="txtNewTurnier"></asp:TextBox>
+            <asp:Button  runat="server" ID="btnAddTurnier" Text="Hinzufügen" OnClick="btnAddTurnier_Click"/> <br />
+            <asp:DropDownList ID="DDDelTurnier" runat="server"></asp:DropDownList>
+            <asp:Button runat="server" ID="btnDelTurnier" Text="Löschen" OnClick="btnDelTurnier_Click" />
             <h3>Spiel Hinzufügen: </h3> <br />
             Mannschaft 1: <asp:DropDownList runat="server" ID="ddMS1"></asp:DropDownList> <br />
             Mannschaft 2: <asp:DropDownList runat="server" ID="ddMS2"></asp:DropDownList> <br />

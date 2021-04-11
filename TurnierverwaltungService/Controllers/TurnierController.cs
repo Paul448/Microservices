@@ -123,5 +123,25 @@ namespace TurnierverwaltungService.Controllers
             catch { }
             return true;
         }
+        [HttpGet]
+        [Route("API/Turnier/AddTurnier/{TuNAME}")]
+        public bool AddTurnier(string TuNAME)
+        {
+            string sql = "insert into turnier (name) values ('" + TuNAME + "')";
+            string cnst = "Server=localhost;Database=microservicespro;Uid=root;";
+            MySqlConnection connect = new MySqlConnection(cnst);
+            MySqlCommand cmd = new MySqlCommand(sql, connect);
+            try
+            {
+                connect.Open();
+                cmd.ExecuteNonQuery();
+                connect.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
     }
 }
