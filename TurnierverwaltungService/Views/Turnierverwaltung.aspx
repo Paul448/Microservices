@@ -8,13 +8,14 @@
     <title>Turnierverwaltung</title>
 </head>
 <body>
-    <div style="width:100%; height:30px; background-color:grey; margin-top:0px; padding-top:0px;">
-        <button onclick="location.href = 'https://localhost:44338/Views/Gatehome';" style="height:100%; width:75px;margin-right:10px; float:left;" id="myButton">Home</button>
-        <button onclick="location.href = 'https://localhost:44328/Views/Personenverwaltung';" style="height:100%; width:155px;margin-right:10px; float:left;" id="myButton1">Personenverwaltung</button>
-        <button onclick="location.href = 'https://localhost:44336/Views/Mannschaftsverwaltung';" style="height:100%; width:155px;margin-right:10px; float:left;" id="myButton2">Mannschaftsverwaltung</button>
-        <button onclick="location.href = 'https://localhost:44399/Views/Turnierverwaltung';" style="height:100%; width:155px;margin-right:10px; float:left;" id="myButton3">Turnierverwaltung</button>
-    </div>
     <form id="form1" runat="server">
+    <div style="width:100%; height:30px; background-color:grey; margin-top:0px; padding-top:0px;">
+        <asp:Button runat="server" style="height:100%; width:75px;margin-right:10px; float:left;" ID="localhostö44338äViewsäGatehome" OnClick="DirectTO" Text="Home"/>
+        <asp:Button runat="server" style="height:100%; width:150px;margin-right:10px; float:left;" ID="localhostö44328äViewsäPersonenverwaltung" OnClick="DirectTO" Text="Personenverwaltung"/>
+        <asp:Button runat="server" style="height:100%; width:160px;margin-right:10px; float:left;" ID="localhostö44336äViewsäMannschaftsverwaltung" OnClick="DirectTO" Text="Mannschaftsverwaltung"/>
+        <asp:Button runat="server" style="height:100%; width:150px;margin-right:10px; float:left;" ID="localhostö44399äViewsäTurnierverwaltung" OnClick="DirectTO" Text="Turnierverwaltung"/>
+        <asp:Button runat="server" style="height:100%; width:100px;margin-right:10px; float:right;" ID="btnLogout" Text="LOGOUT"/>
+    </div>
         <div>
             <h1>Turnierverwaltung</h1> <br />
             <h3>Turniere:</h3>
