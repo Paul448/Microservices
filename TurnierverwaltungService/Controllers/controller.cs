@@ -75,6 +75,12 @@ namespace TurnierverwaltungService.Controllers
             string back = GetHTTP("DelTurnier/" + TID);
             return back;
         }
+
+        public string DelSpiele(int SID)
+        {
+            string back = GetHTTP("DelSpiele/" + SID);
+            return back;
+        }
         public string GetHTTP(string URI2, string PORT = "44399")
         {
             string url = "https://localhost:" + PORT + "/API/Turnier/" + URI2;

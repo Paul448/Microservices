@@ -164,5 +164,28 @@ namespace TurnierverwaltungService.Controllers
                 return false;
             }
         }
+
+
+        [HttpGet]
+        [Route("API/Turnier/DelSpiele/{SID}")]
+        public bool DelSpiele(int SID)
+        {
+            string sql = "delete from spiele where SPID =" + SID;
+            string cnst = "Server=localhost;Database=microservicespro;Uid=root;";
+            MySqlConnection connect = new MySqlConnection(cnst);
+            MySqlCommand cmd = new MySqlCommand(sql, connect);
+            try
+            {
+                connect.Open();
+                cmd.ExecuteNonQuery();
+                connect.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+        }
     }
 }

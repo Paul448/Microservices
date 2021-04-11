@@ -245,5 +245,11 @@ namespace TurnierverwaltungService.Views
             Verwalter.DelTurnier(vTID);
             LoadUI();
         }
+
+        protected void btnDelSpiel_Click(object sender, EventArgs e)
+        {
+            Verwalter.DelSpiele(Convert.ToInt32(txtDelSpiel.Text));
+            LoadUI();
+        }
     }
 }

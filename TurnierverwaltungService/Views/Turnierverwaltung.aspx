@@ -38,6 +38,9 @@
             Ergebnis (MS1): <asp:TextBox ID="txtErgebnisMS1" runat="server" TextMode="Number"></asp:TextBox> <br />
             Ergebnis (MS2): <asp:TextBox ID="txtErgebnisMS2" runat="server" TextMode="Number"></asp:TextBox> <br />
             <asp:Button ID="btnAddSpiel" runat="server" Text="OK" OnClick="btnAddSpiel_Click" />
+            <br /> <h3>Spiel Löschen:</h3>
+            Spiel-ID<asp:TextBox runat="server" TextMode="Number" ID="txtDelSpiel"></asp:TextBox>
+            <asp:Button id="btnDelSpiel" runat="server" Text="Löschen" OnClick="btnDelSpiel_Click"/>
         </div>
     </form>
 </body>
