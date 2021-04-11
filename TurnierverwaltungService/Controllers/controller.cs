@@ -18,6 +18,19 @@ namespace TurnierverwaltungService.Controllers
         {
             
         }
+
+        public string CheckPW(Uri url)
+        {
+            var query = HttpUtility.ParseQueryString(url.Query);
+            string AuthID = query.Get("auth");
+            if(AuthID == "")
+            {
+                AuthID = "0";
+            }
+            string APIString = GetHTTP2("api/Gate/CheckAuth/" + AuthID, "44338");
+            return APIString;
+        }
+
         public List<Turnier> GetTurniere()
         {
             string json = GetHTTP("GetTurniere");
@@ -50,9 +63,22 @@ namespace TurnierverwaltungService.Controllers
             string bool1 = GetHTTP("AddTeilMS/" + TID + "/" + MID);
             return bool1;
         }
-        public string GetHTTP(string URI2)
+        public string GetHTTP(string URI2, string PORT = "44399")
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://localhost:44399/API/Turnier/" + URI2);
+            string url = "https://localhost:" + PORT + "/API/Turnier/" + URI2;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "GET";
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            Stream recieve = response.GetResponseStream();
+            StreamReader reader = new StreamReader(recieve);
+            string ResponseText = reader.ReadToEnd();
+            return ResponseText;
+        }
+
+        public string GetHTTP2(string URI2, string PORT = "44399")
+        {
+            string url = "https://localhost:" + PORT + "/" + URI2;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             Stream recieve = response.GetResponseStream();

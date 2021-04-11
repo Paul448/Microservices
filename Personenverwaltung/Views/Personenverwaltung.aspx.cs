@@ -17,11 +17,22 @@ namespace Personenverwaltung.Views
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!this.IsPostBack)
+            Verwalter = new controller();
+            if (!this.IsPostBack)
             {
                 //Verwalter = new controller();
             }
-            Verwalter = new controller();
+            Uri uri = new Uri(HttpContext.Current.Request.Url.AbsoluteUri);
+            string Check = Verwalter.CheckPW(uri);
+            if (Check == "false")
+            {
+                Response.Redirect("https://localhost:44338/Views/Gatehome");
+            }
+            else
+            {
+                //PW Richtig
+            }
+            
             Verwalter.GetAllPersons();
             Verwalter.GetAllUser();
             LoadTablePerson();
