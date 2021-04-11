@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Erstellungszeit: 18. Mrz 2021 um 12:05
--- Server-Version: 10.1.37-MariaDB
--- PHP-Version: 7.2.12
+-- Host: 127.0.0.1
+-- Erstellungszeit: 11. Apr 2021 um 22:53
+-- Server-Version: 10.4.17-MariaDB
+-- PHP-Version: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -39,11 +38,10 @@ CREATE TABLE `mannschaft` (
 
 INSERT INTO `mannschaft` (`MID`, `NAME`) VALUES
 (2, 'FC Bonn'),
-(6, '44'),
-(7, 'FC TESTENDINGS'),
-(8, 'FC TESTENDINGS'),
-(9, 'FC TESTENDINGS'),
-(10, 'Test');
+(11, 'FC Königswinter'),
+(13, 'Oberpleis E.V'),
+(14, 'Rheinbach FC'),
+(15, 'Godesberger FC');
 
 -- --------------------------------------------------------
 
@@ -67,7 +65,8 @@ INSERT INTO `person` (`PID`, `Name`, `Typ`, `Siege`) VALUES
 (2, 'Jürgem', 'Fussballspieler', NULL),
 (3, 'Neuer', 'Trainer', NULL),
 (4, 'Lesch', 'Trainer', NULL),
-(5, 'Moritz', 'Fusballspieler', NULL);
+(5, 'Moritz', 'Fusballspieler', NULL),
+(8, 'Paul', 'Fussballspieler', NULL);
 
 -- --------------------------------------------------------
 
@@ -88,7 +87,10 @@ CREATE TABLE `ps_ms` (
 INSERT INTO `ps_ms` (`PSMS_ID`, `MID`, `PID`) VALUES
 (1, 2, 1),
 (2, 2, 3),
-(8, 2, 3);
+(8, 2, 3),
+(9, 11, 2),
+(10, 11, 2),
+(11, 2, 8);
 
 -- --------------------------------------------------------
 
@@ -110,7 +112,10 @@ CREATE TABLE `spiele` (
 --
 
 INSERT INTO `spiele` (`SPID`, `TID`, `MS1ID`, `MS2ID`, `Ergebnis1`, `Ergebnis2`) VALUES
-(1, 1, 2, 7, 3, 9);
+(10, 1, 13, 11, 4, 3),
+(11, 1, 15, 11, 9, 1),
+(12, 2, 11, 14, 1, 2),
+(14, 1, 15, 11, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -129,8 +134,12 @@ CREATE TABLE `tms` (
 --
 
 INSERT INTO `tms` (`TMS`, `TID`, `MID`) VALUES
-(1, 1, 2),
-(2, 1, 7);
+(10, 1, 13),
+(11, 1, 15),
+(12, 1, 11),
+(13, 2, 2),
+(14, 2, 11),
+(15, 2, 14);
 
 -- --------------------------------------------------------
 
@@ -150,7 +159,8 @@ CREATE TABLE `turnier` (
 
 INSERT INTO `turnier` (`TID`, `Datum`, `name`) VALUES
 (1, '2021-03-18', 'Erstes Testturnier'),
-(2, '2021-03-18', 'Zweites Testturnier');
+(2, '2021-03-18', 'Zweites Testturnier'),
+(7, NULL, 'Erste Bundesliga');
 
 -- --------------------------------------------------------
 
@@ -236,37 +246,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT für Tabelle `mannschaft`
 --
 ALTER TABLE `mannschaft`
-  MODIFY `MID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `MID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT für Tabelle `person`
 --
 ALTER TABLE `person`
-  MODIFY `PID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `PID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT für Tabelle `ps_ms`
 --
 ALTER TABLE `ps_ms`
-  MODIFY `PSMS_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `PSMS_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT für Tabelle `spiele`
 --
 ALTER TABLE `spiele`
-  MODIFY `SPID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `SPID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT für Tabelle `tms`
 --
 ALTER TABLE `tms`
-  MODIFY `TMS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `TMS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT für Tabelle `turnier`
 --
 ALTER TABLE `turnier`
-  MODIFY `TID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `TID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT für Tabelle `users`
@@ -289,16 +299,16 @@ ALTER TABLE `ps_ms`
 -- Constraints der Tabelle `spiele`
 --
 ALTER TABLE `spiele`
-  ADD CONSTRAINT `FK_MS1` FOREIGN KEY (`MS1ID`) REFERENCES `mannschaft` (`MID`),
-  ADD CONSTRAINT `FK_MS2` FOREIGN KEY (`MS2ID`) REFERENCES `mannschaft` (`MID`),
-  ADD CONSTRAINT `FK_TIDSPIELE` FOREIGN KEY (`TID`) REFERENCES `turnier` (`TID`);
+  ADD CONSTRAINT `FK_MS1` FOREIGN KEY (`MS1ID`) REFERENCES `mannschaft` (`MID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_MS2` FOREIGN KEY (`MS2ID`) REFERENCES `mannschaft` (`MID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_TIDSPIELE` FOREIGN KEY (`TID`) REFERENCES `turnier` (`TID`) ON DELETE CASCADE;
 
 --
 -- Constraints der Tabelle `tms`
 --
 ALTER TABLE `tms`
-  ADD CONSTRAINT `FK_MID` FOREIGN KEY (`MID`) REFERENCES `mannschaft` (`MID`),
-  ADD CONSTRAINT `FK_TID` FOREIGN KEY (`TID`) REFERENCES `turnier` (`TID`);
+  ADD CONSTRAINT `FK_MID` FOREIGN KEY (`MID`) REFERENCES `mannschaft` (`MID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_TID` FOREIGN KEY (`TID`) REFERENCES `turnier` (`TID`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
