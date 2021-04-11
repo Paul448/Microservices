@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GatewayService", "GatewaySe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{2B8C33E3-1CE5-4D58-A977-865ABB24FF85}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\Downloads\Microservices-master\microservicespro.sql = ..\..\..\Downloads\Microservices-master\microservicespro.sql
+		..\..\..\Downloads\microservicespro.sql = ..\..\..\Downloads\microservicespro.sql
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurnierverwaltungService", "TurnierverwaltungService\TurnierverwaltungService.csproj", "{58553734-B941-425B-A657-2A9E416A8718}"
